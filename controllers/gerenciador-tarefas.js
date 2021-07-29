@@ -1,3 +1,5 @@
+//Sempre iniciar o servidor com comando no terminal --> node index.js
+
 const uuidv4 = require("uuid/v4");
 
 let tarefas = [
