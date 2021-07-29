@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { response } = require("express");
 
+const { listarTarefaId } = require("./controllers/gerenciador-tarefas.js");
+
 const app = express();
 const port = 3001;
 
@@ -23,7 +25,7 @@ function naoImplementado(req, res) {
 //listar todas as tarefas --> get
 app.get("/gerenciador-tarefas", naoImplementado);
 //listar uma tarefa por id --> get
-app.get("/gerenciador-tarefas/:id", naoImplementado);
+app.get("/gerenciador-tarefas/:id", listarTarefaId);
 //cadastrar uma tarefa --> post
 app.post("/gerenciador-tarefas", naoImplementado);
 //atualizar uma tarefa --> put
