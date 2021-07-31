@@ -2,11 +2,11 @@
 
 ## Sobre o projeto
 
-Este é meu primeiro projeto para estudos de Node JS para back-end. Foi criado um API com as funções básicas (Create, Read, Update, Delete).
+Este é meu primeiro projeto para estudos de Node JS. Foi criado uma API com as funções básicas (Create, Read, Update, Delete).
 
 ## Resolve qual problema?
 
-Este projeto foi feito como idéia de continuidade de um outro projeto que eu já tenho em meu portfólio (você pode acessá-lo clicando neste link [Todo list em React JS](https://github.com/pedrogutierresbr/todo-list-reactjs)), para subtituir o armazenamento no inicialmente era no local storage para a API.
+Este projeto foi feito como idéia de continuidade de um outro projeto que eu já tenho em meu portfólio (você pode acessá-lo clicando neste link [Todo list em React JS](https://github.com/pedrogutierresbr/todo-list-reactjs)), para subtituir o armazenamento que inicialmente era no local storage para a API.
 
 ## Tecnologias usadas
 
