@@ -55,13 +55,44 @@ function cadastrarTarefa(req, res) {
     if (!req.body["nome"] && !req.body["concluida"]) {
         res.status(400).json({ erro: "Requisição inválida" });
     }
+    //referenciado infos de acordo com o que vira da URL
     const tarefa = {
         id: uuidv4(),
         nome: req.body["nome"],
         concluida: req.body["concluida"],
     };
+    //adicionado no array tarefas (nossa simulação de BD)
     tarefas.push(tarefa);
+    //comando de resposta da requisição
     res.json(tarefa);
 }
 
-module.exports = { listarTarefaId, listarTarefas, cadastrarTarefa };
+function atualizarTarefa(req, res) {
+    //validação
+    if (!req.body["nome"] && !req.body["concluida"]) {
+        res.status(400).json({ erro: "Requisição inválida" });
+    }
+    // obter id da URL
+    const id = req.params.id;
+    let tarefaAtualizada = false; // se nao for atualizada para true, nao encontrou a tarefa
+    tarefas = tarefas.map((tarefa) => {
+        if (tarefa.id === id) {
+            tarefa.nome = req.body["nome"];
+            tarefa.concluida = req.body["concluida"];
+            tarefaAtualizada = true;
+        }
+        return tarefa;
+    });
+    //repsosta da requicao cado erro
+    if (!tarefaAtualizada) {
+        res.status(404).json({ erro: "Tarefa não encontrada" });
+    }
+    //resposta da requisicao caso deu certo
+    res.json({
+        id: id,
+        nome: req.body["nome"],
+        concluida: req.body["concluida"],
+    });
+}
+
+module.exports = { listarTarefaId, listarTarefas, cadastrarTarefa, atualizarTarefa };
