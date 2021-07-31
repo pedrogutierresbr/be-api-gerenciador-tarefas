@@ -10,10 +10,11 @@ const {
     listarTarefas,
     cadastrarTarefa,
     atualizarTarefa,
+    removerTarefa,
 } = require("./controllers/gerenciador-tarefas.js");
 
-const app = express();
-const port = 3001;
+const app = express(); //criado servidor
+const port = 3001; //definido porta de atuacao do servidor
 
 app.use(cors()); //adicionado filtro cors
 app.use(
@@ -38,7 +39,7 @@ app.post("/gerenciador-tarefas", cadastrarTarefa);
 //atualizar uma tarefa --> put
 app.put("/gerenciador-tarefas/:id", atualizarTarefa);
 //remover uma tarefa --> delete
-app.delete("/gerenciador-tarefas/:id", naoImplementado);
+app.delete("/gerenciador-tarefas/:id", removerTarefa);
 //concluir uma tarefa --> put
 app.put("/gerenciador-tarefas/:id/concluir", naoImplementado);
 

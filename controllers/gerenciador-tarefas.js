@@ -55,7 +55,7 @@ function cadastrarTarefa(req, res) {
     if (!req.body["nome"] && !req.body["concluida"]) {
         res.status(400).json({ erro: "Requisição inválida" });
     }
-    //referenciado infos de acordo com o que vira da URL
+    //referenciado infos de acordo com o que vem da URL
     const tarefa = {
         id: uuidv4(),
         nome: req.body["nome"],
@@ -95,4 +95,19 @@ function atualizarTarefa(req, res) {
     });
 }
 
-module.exports = { listarTarefaId, listarTarefas, cadastrarTarefa, atualizarTarefa };
+function removerTarefa(req, res) {
+    //obter id da URL
+    const id = req.params.id;
+    //definido numero de tarefas existentes no bd, para depois comparar e dizer se tarefa foi encontrada
+    const numTarefas = tarefas.length;
+    // aplicar filtro para excluir apenas tarefa requisitada (retorna o array - tarefa pedida para ser excluida)
+    tarefas = tarefas.filter((tarefa) => tarefa.id !== id);
+    //validação caso erro
+    if (numTarefas === tarefas.length) {
+        res.status(404).json({ erro: "Tarefa não encontrada" });
+    }
+    //validação caso deu certo
+    res.json({ msg: "Tarefa removida com sucesso!" });
+}
+
+module.exports = { listarTarefaId, listarTarefas, cadastrarTarefa, atualizarTarefa, removerTarefa };
