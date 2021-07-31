@@ -50,4 +50,18 @@ function listarTarefas(req, res) {
     });
 }
 
-module.exports = { listarTarefaId, listarTarefas };
+function cadastrarTarefa(req, res) {
+    //primeira validacao que se for vdd retorna erro
+    if (!req.body["nome"] && !req.body["concluida"]) {
+        res.status(400).json({ erro: "Requisição inválida" });
+    }
+    const tarefa = {
+        id: uuidv4(),
+        nome: req.body["nome"],
+        concluida: req.body["concluida"],
+    };
+    tarefas.push(tarefa);
+    res.json(tarefa);
+}
+
+module.exports = { listarTarefaId, listarTarefas, cadastrarTarefa };
