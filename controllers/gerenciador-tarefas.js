@@ -1,5 +1,6 @@
 //Sempre iniciar o servidor com comando no terminal --> node index.js
 
+const { json } = require("body-parser");
 const uuidv4 = require("uuid/v4");
 
 let tarefas = [
@@ -110,4 +111,25 @@ function removerTarefa(req, res) {
     res.json({ msg: "Tarefa removida com sucesso!" });
 }
 
-module.exports = { listarTarefaId, listarTarefas, cadastrarTarefa, atualizarTarefa, removerTarefa };
+function concluirTarefa(req, res) {
+    //obter id da URL
+    const id = req.params.id;
+    // variavel para comparar no final e dizer se foi atualizado ou não
+    let tarefaConcludia = false;
+    // usado map para atualizar o array de bd
+    tarefas = tarefas.map((tarefa) => {
+        if (tarefa.id === id) {
+            tarefa.concluida = true;
+            tarefaConcludia = true;
+        }
+        return tarefa;
+    });
+    // validacao caso erro
+    if (!tarefaConcludia) {
+        res.status(404).json({ erro: "Tarefa não encontrada" });
+    }
+    //validacao caso deu certo
+    res.json({ msg: "Tarefa concluida com sucesso!" });
+}
+
+module.exports = { listarTarefaId, listarTarefas, cadastrarTarefa, atualizarTarefa, removerTarefa, concluirTarefa };

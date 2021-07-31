@@ -11,6 +11,7 @@ const {
     cadastrarTarefa,
     atualizarTarefa,
     removerTarefa,
+    concluirTarefa,
 } = require("./controllers/gerenciador-tarefas.js");
 
 const app = express(); //criado servidor
@@ -24,11 +25,11 @@ app.use(
 );
 app.use(express.json()); //dito qual tipo de arquivo que sera trabalhado (API RestFul usa json)
 
-//get (retorna dados), post (cadastro de dados), put (atualiza/modifica dados), delete (deleta dados)
-
 function naoImplementado(req, res) {
     res.status(501).json({ erro: "Não implementado" });
-}
+} //Essa função serviu somente no inicio da criação desta API, se quiser pode deletar, decidi manter por meios didáticos
+
+//get (retorna dados), post (cadastro de dados), put (atualiza/modifica dados), delete (deleta dados)
 
 //listar todas as tarefas --> get
 app.get("/gerenciador-tarefas", listarTarefas);
@@ -41,6 +42,6 @@ app.put("/gerenciador-tarefas/:id", atualizarTarefa);
 //remover uma tarefa --> delete
 app.delete("/gerenciador-tarefas/:id", removerTarefa);
 //concluir uma tarefa --> put
-app.put("/gerenciador-tarefas/:id/concluir", naoImplementado);
+app.put("/gerenciador-tarefas/:id/concluir", concluirTarefa);
 
 app.listen(port, () => console.log(`Servidor inicializado na porta ${port}`));
