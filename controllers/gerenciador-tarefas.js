@@ -1,6 +1,4 @@
 //Sempre iniciar o servidor com comando no terminal --> node index.js
-
-const { json } = require("body-parser");
 const uuidv4 = require("uuid/v4");
 
 let tarefas = [

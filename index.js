@@ -1,9 +1,6 @@
 //Sempre iniciar o servidor com comando no terminal --> node index.js
-
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
-const { response } = require("express");
 
 const {
     listarTarefaId,
