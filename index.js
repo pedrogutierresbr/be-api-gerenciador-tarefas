@@ -46,6 +46,6 @@ app.put("/gerenciador-tarefas/:id/concluir", concluirTarefa);
 /*-------------------------------------------------------------------------------------*/
 
 //mini-ecommerce
-app.post("/pay&take/checkout/finalizar-compra", finalizarCompra);
+app.post("/pay-take/checkout/finalizar-compra", finalizarCompra);
 
 app.listen(port, () => console.log(`Servidor inicializado na porta ${port}`));
