@@ -8,14 +8,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/pedrogutierresbr/servidor-api.git"
+        "url": "git+https://github.com/pedrogutierresbr/servidor-api-gerenciador-tarefas.git"
     },
     "author": "Pedro Gutierres",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/pedrogutierresbr/servidor-api/issues"
+        "url": "https://github.com/pedrogutierresbr/servidor-api-gerenciador-tarefas/issues"
     },
-    "homepage": "https://github.com/pedrogutierresbr/servidor-api#readme",
+    "homepage": "https://github.com/pedrogutierresbr/servidor-api-gerenciador-tarefas#readme",
     "dependencies": {
         "body-parser": "^1.19.0",
         "cors": "^2.8.5",

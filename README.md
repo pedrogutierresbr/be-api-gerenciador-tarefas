@@ -31,7 +31,7 @@ Além disto, é bom ter um editor para trabalhar com o código,exemplo: [VSCode]
 
 1° - git clone https://github.com/pedrogutierresbr/servidor-api.git -> Para clonar o repositório
 
-2° - npm install -> Para instalar as dependencias necessarias para o projeto
+2° - npm install -> Para instalar as dependências necessárias para o projeto
 
 3° - node index.js -> Para iniciar o servidor (Servidor utilizando a porta 3001)
 ```
