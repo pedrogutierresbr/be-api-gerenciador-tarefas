@@ -2,22 +2,29 @@
 const express = require("express");
 const cors = require("cors");
 
-const { finalizarCompra, obterCidadesPorEstado } = require("./controllers/mini-ecommerce.js");
-
 const app = express(); //criado servidor
 const port = 3001; //definido porta de atuacao do servidor
 
 app.use(cors()); //adicionado filtro cors
-app.use(
-    express.urlencoded({
-        extended: true,
-    })
-);
 app.use(express.json()); //dito qual tipo de arquivo que sera trabalhado (API RestFul usa json)
 
-//Gerenciador-tarefas rotas
-app.post("/pay-take/checkout/finalizar-compra", finalizarCompra);
+function naoImplementado(req, res) {
+    res.status(501).json({ erro: "Não implementado" });
+}
 
-app.get("/pay-take/estado/:siglaEstado/cidades", obterCidadesPorEstado);
+//get, post, put, delete
+
+//listar todas as tarefas - get
+app.get("/gerenciador-tarefas", naoImplementado);
+//listar uma tarefa por id - get
+app.get("/gerenciador-tarefas/:id", naoImplementado);
+//cadastrar uma tarefa - post
+app.post("/gerenciador-tarefas", naoImplementado);
+//atualizar uma tarefa - put
+app.put("/gerenciador-tarefas/:id", naoImplementado);
+//remover uma tarefa - delete
+app.delete("/gerenciador-tarefas/:id", naoImplementado);
+// concluir uma tarefa - put
+app.put("/gerenciador-tarefas/:id/concluir", naoImplementado);
 
 app.listen(port, () => console.log(`Servidor inicializado na porta ${port}`));
