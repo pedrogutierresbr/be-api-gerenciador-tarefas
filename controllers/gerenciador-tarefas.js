@@ -92,7 +92,15 @@ function atualizarTarefa(req, res) {
     });
 }
 
-function removerTarefa(req, res) {}
+function removerTarefa(req, res) {
+    const id = req.params.id;
+    const numTarefas = tarefas.length;
+    tarefas = tarefas.filter((tarefa) => tarefa.id !== id);
+    if (numTarefas === tarefas.length) {
+        res.status(404).json({ erro: "Tarefa não encontrada" });
+    }
+    res.json({ msg: "Tarefa removida com sucesso" });
+}
 
 function concluirTarefa(req, res) {}
 
