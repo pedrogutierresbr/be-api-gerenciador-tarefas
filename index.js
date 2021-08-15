@@ -2,6 +2,8 @@
 const express = require("express");
 const cors = require("cors");
 
+const { listarTarefaId, listarTarefas } = require("./controllers/gerenciador-tarefas");
+
 const app = express(); //criado servidor
 const port = 3001; //definido porta de atuacao do servidor
 
@@ -12,12 +14,11 @@ function naoImplementado(req, res) {
     res.status(501).json({ erro: "Não implementado" });
 }
 
-//get, post, put, delete
-
+//Mapa de rotas
 //listar todas as tarefas - get
-app.get("/gerenciador-tarefas", naoImplementado);
+app.get("/gerenciador-tarefas", listarTarefas);
 //listar uma tarefa por id - get
-app.get("/gerenciador-tarefas/:id", naoImplementado);
+app.get("/gerenciador-tarefas/:id", listarTarefaId);
 //cadastrar uma tarefa - post
 app.post("/gerenciador-tarefas", naoImplementado);
 //atualizar uma tarefa - put
