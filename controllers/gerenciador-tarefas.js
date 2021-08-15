@@ -1,4 +1,4 @@
-const uuidv4 = require("uuid/v4");
+const { v4: uuidv4 } = require("uuid");
 
 let tarefas = [
     { id: "1", nome: "Aprender React", concluida: true },
@@ -48,4 +48,30 @@ function listarTarefas(req, res) {
     });
 }
 
-module.exports = { listarTarefaId, listarTarefas };
+function cadastrarTarefa(req, res) {
+    if (!req.body["nome"] && !req.body["concluido"]) {
+        res.status(400).json({ erro: "Requisição inválida" });
+    }
+    const tarefa = {
+        id: uuidv4(),
+        nome: req.body["nome"],
+        concluido: req.body["concluido"],
+    };
+    tarefas.push(tarefa);
+    res.json(tarefa);
+}
+
+function atualizarTarefa(req, res) {}
+
+function removerTarefa(req, res) {}
+
+function concluirTarefa(req, res) {}
+
+module.exports = {
+    listarTarefaId,
+    listarTarefas,
+    cadastrarTarefa,
+    atualizarTarefa,
+    removerTarefa,
+    concluirTarefa,
+};
