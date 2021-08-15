@@ -1,10 +1,10 @@
 const { v4: uuidv4 } = require("uuid");
 
 let tarefas = [
-    { id: "1", nome: "Aprender React", concluida: true },
-    { id: "2", nome: "Aprender JS", concluida: false },
-    { id: "3", nome: "Estudar inglês", concluida: false },
-    { id: "4", nome: "Estudar Node", concluida: true },
+    { id: "1", nome: "Aprender React", concluido: true },
+    { id: "2", nome: "Aprender JS", concluido: false },
+    { id: "3", nome: "Estudar inglês", concluido: false },
+    { id: "4", nome: "Estudar Node", concluido: true },
 ];
 
 function listarTarefaId(req, res) {
@@ -102,7 +102,21 @@ function removerTarefa(req, res) {
     res.json({ msg: "Tarefa removida com sucesso" });
 }
 
-function concluirTarefa(req, res) {}
+function concluirTarefa(req, res) {
+    const id = req.params.id;
+    let tarefaConcluida = false;
+    tarefas = tarefas.map((tarefa) => {
+        if (tarefa.id === id) {
+            tarefa.concluido = true;
+            tarefaConcluida = true;
+        }
+        return tarefa;
+    });
+    if (!tarefaConcluida) {
+        res.status(404).json({ erro: "Tarefa não encontrada" });
+    }
+    res.json({ msg: "Tarefa concluída com sucesso" });
+}
 
 module.exports = {
     listarTarefaId,
